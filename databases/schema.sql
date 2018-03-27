@@ -28,7 +28,7 @@ create table responses (
     total integer not null
 );
 
-create table response_line (
+create table response_lines (
     response_line_id integer  primary key auto_increment,
     response_id      integer  not null,
     hsn_code         char(20) not null,
