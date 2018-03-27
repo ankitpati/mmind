@@ -29,11 +29,12 @@ create table responses (
 );
 
 create table response_line (
-    response_id  integer  not null,
-    hsn_code     char(20) not null,
-    sales        integer  not null,
-    purchase     integer  not null,
-    trade_margin integer  not null,
+    response_line_id integer  primary key auto_increment,
+    response_id      integer  not null,
+    hsn_code         char(20) not null,
+    sales            integer  not null,
+    purchase         integer  not null,
+    trade_margin     integer  not null,
 
     foreign key (response_id) references responses(id) on delete cascade
 );
