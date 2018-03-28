@@ -22,6 +22,8 @@ sub get_auth_token {
     $details{password} = $user->password;
         # for later verification, and invalidation upon password change
 
+    $details{role_id } = $user->role_id;
+
     return get_token \%details;
 }
 
@@ -32,10 +34,15 @@ sub verify_auth_token {
     my $user = MMind::Users->retrieve ($details->{phone} || $details->{email});
     return unless $user; # user no longer exists in database
 
-    return unless $details->{password} eq $user->password;
-        # password has changed since the token was generated
+    return unless
+        $user &&
+        $details->{password} eq $user->password &&
+        $details->{role_id } eq $user->role_id;
+            # user     no longer exists in database
+            # password has changed since the token was generated
+            # role     has changed since the token was generated
 
-    return 1;
+    return %$details;
 }
 
 1;
