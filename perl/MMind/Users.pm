@@ -35,4 +35,21 @@ sub normalize_column_values {
     $object->{password} = normalise_password $password;
 }
 
+sub search {
+    my ($class, %criteria) = @_;
+
+    my $password = delete $criteria{password};
+    my @users = $class->SUPER::search (%criteria);
+
+    return @users unless defined $password;
+    return () unless @users;
+
+    croak 'Multiple users retrieved with password provided!' if @users > 1;
+
+    my $user = $users[0];
+
+    return $user if verify_password $password, $user->password;
+    return ();
+}
+
 1;
