@@ -2,6 +2,12 @@ use mmind;
 
 set foreign_key_checks = 0; /* to allow dropping old tables */
 
+delete from config;
+insert into config
+values
+    ('token_secret_symmetric', 'replace_this_with_real_secret')
+;
+
 delete from roles;
 insert into roles
 values
