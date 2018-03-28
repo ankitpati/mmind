@@ -11,8 +11,7 @@ use MMind::Config qw(getconfig);
 
 our EXPORT_OK = qw(get_token get_payload);
 
-my $alg = getconfig 'token_algorithm';
-my $key = getconfig 'token_secret_symmetric';
+my ($alg, $key) = getconfig 'token_algorithm', 'token_secret_symmetric';
 
 sub get_token {
     return encode_jwt payload => shift, alg => $alg, key => $key;
