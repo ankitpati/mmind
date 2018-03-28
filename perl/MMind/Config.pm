@@ -13,13 +13,20 @@ __PACKAGE__->columns (All => qw(key val));
 our %config;
 
 sub getconfig {
-    my $key = shift;
+    my @vals;
 
-    return
-        $config{$key} //
-        $ENV{$key} //
-        __PACKAGE__->retrieve ($key)
-    ;
+    foreach my $key (@_) {
+        my $val =
+            $config{$key} //
+            $ENV{$key} //
+            __PACKAGE__->retrieve ($key);
+
+        $config{$key} = $val if defined $val;
+
+        push @vals, $val;
+    }
+
+    return @vals;
 }
 
 1;
