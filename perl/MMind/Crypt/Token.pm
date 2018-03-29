@@ -9,7 +9,7 @@ use Crypt::JWT qw(encode_jwt decode_jwt);
 
 use MMind::Config qw(getconfig);
 
-our EXPORT_OK = qw(get_token get_payload);
+our @EXPORT_OK = qw(get_token get_payload);
 
 my ($alg, $key) = getconfig 'token_algorithm', 'token_secret_symmetric';
 

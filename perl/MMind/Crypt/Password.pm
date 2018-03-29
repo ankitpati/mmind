@@ -8,7 +8,7 @@ use base qw(Exporter);
 use Crypt::Eksblowfish::Bcrypt qw(bcrypt en_base64);
 use Crypt::Random qw(makerandom_octet);
 
-our EXPORT_OK = qw(get_hash verify_password);
+our @EXPORT_OK = qw(get_hash verify_password);
 
 sub get_hash {
     my $password = shift;
