@@ -11,14 +11,12 @@ To avoid disclosing production database passwords in the source repository, the
 application expects some environment variables and configuration files to be in
 place before deployment.
 
-### `/etc/sysconfig/httpd` and `~/.bash_profile`
-Exported for `httpd` and current user, respectively.
-
+### `/etc/httpd/conf.d/zz_secrets.conf`
 ```
-MMIND_HOSTNAME
-MMIND_DATABASE
-MMIND_USERNAME
-MMIND_PASSWORD
+PerlSetEnv MMIND_HOSTNAME localhost
+PerlSetEnv MMIND_DATABASE mmind
+PerlSetEnv MMIND_USERNAME mmind
+PerlSetEnv MMIND_PASSWORD replace_this_with_real_password
 ```
 
 ### `~/.my.cnf` (for `mysql` client)
