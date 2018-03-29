@@ -7,7 +7,7 @@ use base qw(MMind::REST::API);
 
 sub GET {
     my ($self, $req, $res) = @_;
-    $res->data->{usage} = "/auth/(email|phone)/sha512(password)";
+    $res->data->{usage} = "/api/auth/(email|phone)/sha512(password)";
     return Apache2::Const::HTTP_OK;
 }
 
