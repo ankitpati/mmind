@@ -3,8 +3,8 @@ create database mmind character set utf8mb4 collate utf8mb4_unicode_ci;
 use mmind;
 
 create table config (
-    `key` char(100) primary key,
-    `val` char(255) not null
+    cfgkey char(100) primary key,
+    cfgval char(255) not null
 );
 
 create table roles (
@@ -43,7 +43,7 @@ create table received_texts (
     id          integer  primary key auto_increment,
     user_id     integer  not null,
     phone       char(20) not null,
-    `when`      datetime not null,
+    recwhen      datetime not null,
     body        text     not null,
     response_id integer, /* foreign key, but used only for joining */
 
@@ -54,7 +54,7 @@ create table received_emails (
     id          integer   primary key auto_increment,
     user_id     integer   not null,
     email       char(100) not null,
-    `when`      datetime  not null,
+    recwhen      datetime  not null,
     body        text      not null,
     response_id integer, /* foreign key, but used only for joining */
 
@@ -65,7 +65,7 @@ create table received_posts (
     id          integer  primary key auto_increment,
     user_id     integer  not null,
     ip_address  char(50) not null, /* for IPv6 */
-    `when`      datetime not null,
+    recwhen      datetime not null,
     response_id integer  not null,
 
     foreign key (user_id) references users(id) on delete cascade,
