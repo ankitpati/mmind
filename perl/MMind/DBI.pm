@@ -2,14 +2,12 @@ package MMind::DBI;
 
 use base qw(Class::DBI);
 
-use MMind::Config qw(getconfig);
+my $database = $ENV{'MMIND_DATABASE'};
+my $host     = $ENV{'MMIND_HOST'    };
+my $username = $ENV{'MMIND_USERNAME'};
+my $password = $ENV{'MMIND_PASSWORD'};
 
-__PACKAGE__->connection (
-    'dbi:mysql' .
-    ':database='.getconfig('MMIND_DATABASE') .
-    ':host='    .getconfig('MMIND_HOSTNAME') ,
-    getconfig ('MMIND_USERNAME'),
-    getconfig ('MMIND_PASSWORD')
-);
+__PACKAGE__->connection ("dbi:mysql:database=$database:host=$host",
+                         $username, $password);
 
 1;
