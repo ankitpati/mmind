@@ -8,7 +8,7 @@ use base qw(Exporter MMind::DBI);
 our @EXPORT_OK = qw(getconfig);
 
 __PACKAGE__->table ('config');
-__PACKAGE__->columns (All => qw(key val));
+__PACKAGE__->columns (All => qw(cfgkey cfgval));
 
 our %config;
 
@@ -16,10 +16,12 @@ sub getconfig {
     my @vals;
 
     foreach my $key (@_) {
-        my $val =
-            $config{$key} //
-            $ENV{$key} //
-            __PACKAGE__->retrieve ($key);
+        my $val = $config{$key} // $ENV{$key};
+
+        unless (defined $val) {
+            my $cfgobj = __PACKAGE__->retrieve ($key);
+            $val = $cfgobj->cfgval if $cfgobj;
+        }
 
         $config{$key} = $val if defined $val;
 
