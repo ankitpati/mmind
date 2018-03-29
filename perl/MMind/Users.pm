@@ -30,9 +30,9 @@ sub new {
 sub normalize_column_values {
     my ($self, $object) = (shift, shift);
 
-    $object->{phone   } = normalise_phone    $phone;
-    $object->{email   } = normalise_email    $email;
-    $object->{password} = normalise_password $password;
+    $object->{phone   } = normalise_phone    $object->{phone   };
+    $object->{email   } = normalise_email    $object->{email   };
+    $object->{password} = normalise_password $object->{password};
 }
 
 sub search {
