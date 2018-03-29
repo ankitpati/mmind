@@ -6,6 +6,7 @@ use warnings;
 use base qw(MMind::DBI);
 
 use Carp;
+use MMind::Crypt::Password qw(verify_password);
 use MMind::Util::Validate qw(validate_phone validate_email);
 use MMind::Util::Normalise qw(normalise_phone normalise_email
                               normalise_password);
