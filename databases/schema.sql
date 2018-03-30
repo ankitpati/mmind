@@ -77,6 +77,14 @@ create table language (
     lang  char(10) not null
 );
 
+create table localised_messages (
+    lang char(10) not null,
+    description char(100) not null,
+    message text not null,
+
+    primary key (lang, description)
+);
+
 create table businesses (
     gstin   char(20) primary key,
     user_id integer  not null,
