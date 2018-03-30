@@ -43,7 +43,7 @@ create table received_texts (
     id          integer  primary key auto_increment,
     user_id     integer  not null,
     phone       char(20) not null,
-    recwhen      datetime not null,
+    recwhen     datetime not null,
     body        text     not null,
     response_id integer, /* foreign key, but used only for joining */
 
@@ -54,7 +54,7 @@ create table received_emails (
     id          integer   primary key auto_increment,
     user_id     integer   not null,
     email       char(100) not null,
-    recwhen      datetime  not null,
+    recwhen     datetime  not null,
     body        text      not null,
     response_id integer, /* foreign key, but used only for joining */
 
@@ -65,9 +65,9 @@ create table received_posts (
     id          integer  primary key auto_increment,
     user_id     integer  not null,
     ip_address  char(50) not null, /* for IPv6 */
-    recwhen      datetime not null,
+    recwhen     datetime not null,
     response_id integer  not null,
 
-    foreign key (user_id) references users(id) on delete cascade,
+    foreign key (user_id)     references users(id)     on delete cascade,
     foreign key (response_id) references responses(id) on delete cascade
 );
