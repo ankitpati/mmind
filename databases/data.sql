@@ -6,7 +6,8 @@ delete from config;
 insert into config
 values
     ('token_secret_symmetric', 'replace_this_with_real_secret'),
-    ('token_algorithm', 'HS256'),
+    ('token_algorithm', 'A128KW'),
+    ('token_encryption', 'A128GCM'),
     ('token_relative_expiry_seconds', 108000)
 ;
 
