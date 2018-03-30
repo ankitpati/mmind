@@ -71,3 +71,10 @@ create table received_posts (
     foreign key (user_id)     references users(id)     on delete cascade,
     foreign key (response_id) references responses(id) on delete cascade
 );
+
+create table businesses (
+    gstin   char(20) primary key,
+    user_id integer  not null,
+
+    foreign key (user_id) references users(id) on delete cascade
+);
