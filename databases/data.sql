@@ -42,4 +42,18 @@ values
         '$2a$08$a8.Z1gqhO56WGMqIg8e8xugT6.IqSiJBgSRZJLcK7axsnMIEcjm7K', 100)
 ;
 
+delete from languages;
+insert into languages
+values
+    ('Punjab', 'Punjabi'),
+    ('West Bengal', 'Bengali')
+;
+
+delete from businesses;
+insert into businesses
+values
+    (1234, 4, 'Punjab'),
+    (1235, 5, 'West Bengal')
+;
+
 set foreign_key_checks = 1;
