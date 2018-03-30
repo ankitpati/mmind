@@ -86,7 +86,7 @@ create table received_posts (
         on delete cascade
 );
 
-create table language (
+create table languages (
     state char(50) primary key,
     lang  char(10) not null
 );
@@ -105,5 +105,5 @@ create table businesses (
     state   char(50) not null,
 
     foreign key (user_id) references users(id)       on delete cascade,
-    foreign key (state)   references language(state) on delete cascade
+    foreign key (state)   references languages(state) on delete cascade
 );
