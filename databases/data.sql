@@ -1,6 +1,6 @@
 use mmind;
 
-set foreign_key_checks = 0; /* to allow dropping old tables */
+set foreign_key_checks = FALSE; /* to allow dropping old tables */
 
 delete from config;
 insert into config
@@ -56,4 +56,4 @@ values
     (1235, 5, 'West Bengal')
 ;
 
-set foreign_key_checks = 1;
+set foreign_key_checks = TRUE;
