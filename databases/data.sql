@@ -8,7 +8,8 @@ values
     ('token_secret_symmetric', 'replace_this_with_real_secret'),
     ('token_algorithm', 'A128KW'),
     ('token_encryption', 'A128GCM'),
-    ('token_relative_expiry_seconds', 108000)
+    ('token_relative_expiry_seconds', 108000),
+    ('minimum_unprivileged_user_id', 100)
 ;
 
 delete from roles;
@@ -54,6 +55,23 @@ insert into businesses
 values
     (1234, 4, 'Punjab'),
     (1235, 5, 'West Bengal')
+;
+
+delete from responses;
+insert into responses
+values
+    (4, 'January', 2018, 12000, FALSE),
+    (5, 'February', 2018, 13000, TRUE)
+;
+
+delete from response_lines;
+insert into response_lines
+values
+    (0, 4, 'January', 2018, 12, 1200, 1000, 200),
+    (1, 4, 'January', 2018, 13, 1300, 1000, 300),
+    (2, 4, 'January', 2018, 14, 1400, 1000, 400),
+    (3, 4, 'January', 2018, 15, 1500, 1000, 500),
+    (4, 5, 'February', 2018, 1312, 12000, 10000, 2000)
 ;
 
 set foreign_key_checks = TRUE;
