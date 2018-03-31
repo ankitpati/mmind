@@ -112,5 +112,6 @@ create table businesses (
 
 create view full_response as
     select *
-    from responses inner join response_lines using (user_id, month, year)
+    from responses inner join response_lines
+    using (user_id, month, year)
 ;
