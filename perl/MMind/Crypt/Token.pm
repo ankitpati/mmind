@@ -23,8 +23,9 @@ sub get_token {
 }
 
 sub get_payload {
-    return decode_jwt token => shift, accepted_alg => $alg, key => $key,
-                      enc => $enc, verify_iat => 1, verify_exp => 1;
+    return decode_jwt token => shift, accepted_alg => $alg,
+                      key => { kty => 'oct', k => $key }, accepted_enc => $enc,
+                      verify_iat => 1, verify_exp => 1;
 }
 
 1;
