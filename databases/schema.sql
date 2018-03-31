@@ -30,7 +30,7 @@ create table responses (
     turnover integer  not null,
     is_ack   boolean  not null,
 
-    primary key (user_id, month),
+    primary key (user_id, month, year),
     foreign key (user_id) references users(id) on delete cascade
 );
 
@@ -44,8 +44,8 @@ create table response_lines (
     purchase         integer  not null,
     trade_margin     integer  not null,
 
-    foreign key (user_id, month) references responses(user_id, month)
-        on delete cascade
+    foreign key (user_id, month, year)
+        references responses(user_id, month, year) on delete cascade
 );
 
 create table received_texts (
@@ -109,3 +109,8 @@ create table businesses (
     foreign key (user_id) references users(id)       on delete cascade,
     foreign key (state)   references languages(state) on delete cascade
 );
+
+create view full_response as
+    select *
+    from responses inner join response_lines using (user_id, month, year)
+;
