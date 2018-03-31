@@ -16,11 +16,12 @@ my $unpriv_uid = getconfig 'minimum_unprivileged_user_id';
 sub GET {
     my ($self, $req, $res) = @_;
 
-    (my $authorisation_header = $req->headers_in->{Authorization})
-        =~ s/^Bearer //;
+    my $authorisation_header = $req->headers_in->{Authorization};
+    return Apache2::Const::HTTP_UNAUTHORIZED unless $authorisation_header;
+
+    $authorisation_header =~ s/^Bearer //;
 
     my %payload = verify_auth_token $authorisation_header;
-
     return Apache2::Const::HTTP_UNAUTHORIZED
         unless %payload && $payload{role_id} < $unpriv_uid;
 
