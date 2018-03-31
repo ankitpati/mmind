@@ -5,7 +5,7 @@ use warnings;
 
 use base qw(Exporter);
 
-our @EXPORT_OK = qw(retrieve_all_unbless);
+our @EXPORT_OK = qw(dbi_unbless dbi_unbless_list);
 
 sub dbi_unbless {
     my $obj = shift;
@@ -14,15 +14,9 @@ sub dbi_unbless {
     return %unblessed;
 }
 
-sub retrieve_all_unbless {
-    my $dbi_class = shift;
-
-    my @dbi_objects = $dbi_class->retrieve_all;
-
+sub dbi_unbless_list {
     my @obj_array_unbless;
-    push @obj_array_unbless, { dbi_unbless $_ }
-        foreach $dbi_class->retrieve_all;
-
+    push @obj_array_unbless, { dbi_unbless $_ } foreach @_;
     return @obj_array_unbless;
 }
 
