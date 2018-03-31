@@ -10,7 +10,7 @@ use MMind::Util::Validate qw(validate_month validate_year);
 use MMind::ResponseLines;
 
 __PACKAGE__->table ('responses');
-__PACKAGE__->columns (All => qw(user_id month year turnover is_ack));
+__PACKAGE__->columns (All => qw(user_id month year turnover));
 __PACKAGE__->columns (Primary => qw(user_id month year));
 __PACKAGE__->has_many (response_lines => qw(MMind::ResponseLines));
 __PACKAGE__->constrain_column (month => sub { validate_month $_ });
@@ -29,7 +29,6 @@ sub new {
         month    => $month,
         year     => $year,
         turnover => shift,
-        is_ack   => shift,
     });
 
     eval {
