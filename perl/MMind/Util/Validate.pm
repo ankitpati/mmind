@@ -5,7 +5,7 @@ use warnings;
 
 use base qw(Exporter);
 
-our @EXPORT_OK = qw(validate_phone validate_email validate_month);
+our @EXPORT_OK = qw(validate_phone validate_email validate_month validate_year);
 
 my $regex_phone = qr/^\+?(?:\d ?){5,15}$/;
 my $regex_email = qr/^
@@ -29,6 +29,10 @@ sub validate_email {
 sub validate_month {
     my $month = shift;
     return $month && $month <= 12;
+}
+
+sub validate_year {
+    return shift >= 0;
 }
 
 1;
