@@ -6,11 +6,11 @@ use warnings;
 use base qw(MMind::DBI);
 
 use Carp;
-use MMind::Util::Validate qw(month);
+use MMind::Util::Validate qw(validate_month);
 use MMind::ResponseLines;
 
 __PACKAGE__->table ('response_lines');
-__PACKAGE__->columns (All => qw(response_line_id user_id month
+__PACKAGE__->columns (All => qw(response_line_id user_id month year
                                 hsn_code sales purchase trade_margin));
 __PACKAGE__->constrain_column (month => sub { validate_month $_ });
 
@@ -25,6 +25,7 @@ sub new {
         $response_line = __PACKAGE__->insert ({
             user_id      => shift,
             month        => shift,
+            year         => shift,
             hsn_code     => shift,
             sales        => shift,
             purchase     => shift,
