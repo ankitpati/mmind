@@ -31,8 +31,15 @@ sub verify_auth_token {
     my $details = get_payload shift;
     return unless ref $details; # bogus token, could not be parsed
 
-    my $user = MMind::Users->retrieve ($details->{phone} || $details->{email});
-    return unless $user; # user no longer exists in database
+    my %search_hash;
+    $search_hash{phone} = $details->{phone} if $details->{phone};
+    $search_hash{email} = $details->{email} if $details->{email};
+
+    my @user = MMind::Users->search (%search_hash);
+    return unless @user; # user no longer exists in database
+    die "Multiple users found with given details!\n" if @user > 1;
+
+    my $user = shift @user;
 
     return unless
         $user &&
