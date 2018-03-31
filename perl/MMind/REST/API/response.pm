@@ -8,6 +8,7 @@ use base qw(MMind::REST::API);
 use MMind::Config qw(getconfig);
 use MMind::Auth::Token qw(verify_auth_token);
 use MMind::Responses;
+use MMind::Database::View::FullResponse;
 use MMind::Util::Unbless qw(dbi_unbless_list);
 
 my $unpriv_uid = getconfig 'minimum_unprivileged_user_id';
@@ -23,8 +24,8 @@ sub GET {
     return Apache2::Const::HTTP_UNAUTHORIZED
         unless %payload && $payload{role_id} < $unpriv_uid;
 
-    $res->data->{responses}
-        = [dbi_unbless_list (MMind::Responses->retrieve_all)];
+    $res->data->{responses} =
+        [dbi_unbless_list (MMind::Database::View::FullResponse->retrieve_all)];
     return Apache2::Const::HTTP_OK;
 }
 
