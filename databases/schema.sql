@@ -28,7 +28,6 @@ create table responses (
     month    tinyint  not null,
     year     smallint not null,
     turnover integer  not null,
-    is_ack   boolean  not null,
 
     primary key (user_id, month, year),
     foreign key (user_id) references users(id) on delete cascade
