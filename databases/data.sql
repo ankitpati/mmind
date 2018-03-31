@@ -60,8 +60,8 @@ values
 delete from responses;
 insert into responses
 values
-    (4, 'January', 2018, 12000, FALSE),
-    (5, 'February', 2018, 13000, TRUE)
+    (4, 'January', 2018, 12000),
+    (5, 'February', 2018, 13000)
 ;
 
 delete from response_lines;
