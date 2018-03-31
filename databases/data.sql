@@ -28,10 +28,10 @@ values
         '$2a$08$Go8n2g1fYqQwoaf/ykH5PeXT.g7jLKo8dibk1ixD5xR650flOPzrO', 0),
 
     (1, 'Sharang Gupta', '+918879060707', 'sharang.gupta@sitpune.edu.in',
-        '$2a$08$7pqki1zZ6jr8ixt/tB/RnOhi8DQhX7fwR/VtAl96T.DqgbNTvaB9i', 1),
+        '$2a$08$o0xOLBhoTNxhSbehcrEeJ.mGnQVxr4paMuWQ/56LkC84JJch4xVN2', 0),
 
     (2, 'Abid Ahmad', '+919921876554', 'ahmad.abid@sitpune.edu.in',
-        '$2a$08$MkdKkCDgiYUK2xy6E4M2V.D0tRyZVpctFMXSW425Y36pMVyfElkRG', 2),
+        '$2a$08$MkdKkCDgiYUK2xy6E4M2V.D0tRyZVpctFMXSW425Y36pMVyfElkRG', 1),
 
     (3, 'Bhumika Saini', '+917016545505', 'bhumika.saini@sitpune.edu.in',
         '$2a$08$eTN3V1dWbwpn3CrgwPKiGuQqEz8DIPDY68XVyeZNNrb8FIxwPagB2', 2),
