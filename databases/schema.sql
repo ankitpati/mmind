@@ -24,10 +24,11 @@ create table users (
 );
 
 create table responses (
-    user_id  integer not null,
-    month    tinyint not null,
-    turnover integer not null,
-    is_ack   boolean not null,
+    user_id  integer  not null,
+    month    tinyint  not null,
+    year     smallint not null,
+    turnover integer  not null,
+    is_ack   boolean  not null,
 
     primary key (user_id, month),
     foreign key (user_id) references users(id) on delete cascade
@@ -37,6 +38,7 @@ create table response_lines (
     response_line_id integer  primary key auto_increment,
     user_id          integer  not null,
     month            tinyint  not null,
+    year             smallint not null,
     hsn_code         char(20) not null,
     sales            integer  not null,
     purchase         integer  not null,
